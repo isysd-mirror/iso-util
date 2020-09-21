@@ -1,0 +1,48 @@
+{
+  "author": {
+    "name": "Joyent",
+    "url": "http://www.joyent.com"
+  },
+  "name": "iso-util",
+  "description": "Node.JS util module",
+  "keywords": [
+    "util"
+  ],
+  "version": "0.11.2",
+  "homepage": "https://github.com/isysd-mirror/iso-util/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isysd-mirror/iso-util.git"
+  },
+  "main": "./util.node.js",
+  "module": "./util.js",
+  "files": [
+    "util.js",
+    "support"
+  ],
+  "scripts": {
+    "test": "node test/node/index.js",
+    "test:browsers": "airtap test/browser/index.js",
+    "preinstall": "gpm -n .. -t .. -u https -i .",
+    "postinstall": "node -e \"try { require('../esm/esm.js')(module); } catch (e) {require('child_process').execSync('npm i', {cwd: require('path').join('..', 'esm')})}\""
+  },
+  "dependencies": {
+    "esm": "../esm",
+    "iso-buffer": "../iso-buffer",
+    "always-global": "../always-global",
+    "iso-inherits": "../iso-inherits",
+    "iso-process": "../iso-process",
+    "iso-validators": "../iso-validators"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "airtap": "~0.1.0",
+    "is-async-supported": "~1.2.0",
+    "run-series": "~1.1.4",
+    "tape": "~4.9.0",
+    "@isysd/gpm": "https://github.com/IonicaBizau/gpm.git"
+  },
+  "browser": {
+    "./support/isBuffer.js": "./support/isBufferBrowser.js"
+  }
+}
